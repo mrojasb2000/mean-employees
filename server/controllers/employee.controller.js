@@ -75,8 +75,10 @@ employeeCtrl.deleteEmployee = (req, res) => {
 };
 
 /*
-employeeCtrl.deleteEmployee = (req, res) => {
-  
+employeeCtrl.deleteEmployee = async (req, res) => {
+  const { id } = req.params;
+  await  employeeModel.findByIdAndRemove(id);
+  res.json({'status': 'Employee Deleted.'});
 };
 */
 

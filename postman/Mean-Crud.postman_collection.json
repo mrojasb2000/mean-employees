@@ -66,6 +66,37 @@
 			"response": []
 		},
 		{
+			"name": "RemoveOneEmployee",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": ""
+					},
+					{
+						"key": "",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/employees/5b1aa4b8b761d11bd0baf23b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employees",
+						"5b1aa4b8b761d11bd0baf23b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "CreateEmployees",
 			"request": {
 				"method": "POST",
@@ -89,6 +120,36 @@
 					"path": [
 						"api",
 						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOneEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Carolina Magaña\",\n\t\"position\" : \"Junior Assist\",\n\t\"office\" : \"Santiago, Chile\",\n\t\"salary\" : 11000\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/employees/5b1aa4b8b761d11bd0baf23b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employees",
+						"5b1aa4b8b761d11bd0baf23b"
 					]
 				}
 			},
