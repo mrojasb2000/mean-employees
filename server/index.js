@@ -16,6 +16,7 @@ app.use(express.json());
 
 
 // routes
+app.use(require('./routes/employee.routes'));
 
 // staring server goes here
 app.listen(app.get('port'), (req, res) => {
