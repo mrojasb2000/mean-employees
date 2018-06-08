@@ -38,12 +38,27 @@ employeeCtrl.createEmployee = (req, res) => {
 
 };*/
 
-employeeCtrl.updateEmployee = () => {
+employeeCtrl.updateEmployee = (req, res) => {
+    const { id } = req.params;
+    const emp = {
+        name : req.body.name,
+        position: req.body.position,
+        office: req.body.office,
+        salary: req.body.salary
+    };
 
+    employeeModel.findByIdAndUpdate(id, {$set: emp}, {new: true})
+        .then(db =>  res.json({'status': 'Employee Updated.'}))
+        .catch(err => console.log(err)); 
 };
 
-employeeCtrl.deleteEmployee = () => {
-
+employeeCtrl.deleteEmployee = (req, res) => {
+    /*
+    const { id } = req.params;
+    employeeModel.findByIdAndDelete(id)
+        .then(emp =>  res.json(emp))
+        .catch(err => console.log(err)); 
+        */
 };
 
 
