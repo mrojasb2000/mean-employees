@@ -27,3 +27,6 @@ app.use('/api/employees', require('./routes/employee.routes'));
 app.listen(app.get('port'), (req, res) => {
    console.log("Server on port ", app.get('port')); 
 });
+
+
+module.exports = app; // for testing

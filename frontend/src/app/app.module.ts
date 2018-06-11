@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+// Components
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 
@@ -13,7 +14,8 @@ import { EmployeesComponent } from './components/employees/employees.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
