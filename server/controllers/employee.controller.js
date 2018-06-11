@@ -25,7 +25,7 @@ employeeCtrl.getEmployee =  (req, res) => {
 employeeCtrl.createEmployee = (req, res) => {
     const employee = new employeeModel(req.body);
     employee.save()
-        //.then(db => res.json({'status': 'Employee Saved.'}))
+        //.then(db => res.json({'status': 'Employee successfully saved.'}))
         .then(emp => res.json({emp}))
         .catch(err => console.log(err));
 };
@@ -63,14 +63,14 @@ employeeCtrl.updateEmployee = (req, res) => {
     };
 
     employeeModel.findByIdAndUpdate(id, {$set: emp}, {new: true})
-        .then(db =>  res.json({'status': 'Employee Updated.'}))
+        .then(db =>  res.json({'status': 'Employee successfully updated.'}))
         .catch(err => console.log(err)); 
 };
 
 employeeCtrl.deleteEmployee = (req, res) => {
     const { id } = req.params;
     employeeModel.findByIdAndRemove(id)
-        .then(db =>  res.json({'status': 'Employee Deleted.'}))
+        .then(db =>  res.json({'status': 'Employee successfully deleted.'}))
         .catch(err => console.log(err));         
 };
 

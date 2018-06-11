@@ -85,7 +85,7 @@ describe('Employees', () => {
                 .send(emp)
                 .end((err, res) => {
                     res.should.have.status(200);
-                    //res.body.should.have.property('status').eql('Employee Saved.');
+                    //res.body.should.have.property('status').eql('Employee successfully saved.');
                     console.log(res.body);
                     done();
                 });
@@ -135,7 +135,7 @@ describe('Employees', () => {
                         console.log(err);
                         res.should.have.status(200);
                         res.body.should.have.be.a('object');
-                        res.body.should.have.property('status').eql('Employee Updated.');                                  
+                        res.body.should.have.property('status').eql('Employee successfully updated.');                                  
                     done();                
                 }); 
            });
@@ -143,5 +143,28 @@ describe('Employees', () => {
            
         });
 
+    /*
+    * Test the /DELETE/:id route
+    */
+   describe('/DELETE/:id employees', () => {
+    it('it should DELETE a employee by the given id', (done) =>{
+        let emp = new Employee({ name : "Mauricio Rojas",  position: "Sr. Developer",  office: "Santiago",  salary: 23000  });
+
+        emp.save((err, emp) => {
+            chai.request(server)
+                .delete('/api/employees/' + emp.id)               
+                .end((err, res) => {
+                    console.log(err);
+                    res.should.have.status(200);
+                    res.body.should.have.be.a('object');
+                    res.body.should.have.property('status').eql('Employee successfully deleted.');     
+                    //res.body.result.should.have.property('ok').eql(1);
+                    //res.body.result.should.have.property('n').eql(1);
+                done();                
+            }); 
+       });
+    });
+       
+    });
 
 });
