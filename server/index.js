@@ -28,5 +28,5 @@ app.listen(app.get('port'), (req, res) => {
    console.log("Server on port ", app.get('port')); 
 });
 
-
-module.exports = app; // for testing
+// Required for testing 
+module.exports = app; 

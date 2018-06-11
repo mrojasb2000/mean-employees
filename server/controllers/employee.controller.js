@@ -23,10 +23,10 @@ employeeCtrl.getEmployee =  (req, res) => {
 
 
 employeeCtrl.createEmployee = (req, res) => {
-    const emp = new employeeModel(req.body);
-    console.log(emp);
-    emp.save()
-        .then(db => res.json({'status': 'Employee Saved.'}))
+    const employee = new employeeModel(req.body);
+    employee.save()
+        //.then(db => res.json({'status': 'Employee Saved.'}))
+        .then(emp => res.json({emp}))
         .catch(err => console.log(err));
 };
 
