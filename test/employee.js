@@ -93,14 +93,12 @@ describe('Employees', () => {
    });
 
 
+   /*
+   * Test the /GET/:id route
+   */
    describe('/GET/:id employees', () => {
     it('it should GET a employee by the given id', (done) =>{
-        let emp = new Employee({
-            name : "Mauricio Rojas",
-            position: "Sr. Developer",
-            office: "Santiago",
-            salary: 23000
-        });
+        let emp = new Employee({ name : "Mauricio Rojas",  position: "Sr. Developer",  office: "Santiago",  salary: 23000  });
 
         emp.save((err, emp) => {
             chai.request(server)
@@ -118,9 +116,32 @@ describe('Employees', () => {
                 done();                
             }); 
        });
-        });
+    });
        
     });
+
+    /*
+    * Test the /PUT/:id route
+    */
+    describe('/PUT/:id employees', () => {
+        it('it should UPDATE a employee by the given id', (done) =>{
+            let emp = new Employee({ name : "Mauricio Rojas",  position: "Sr. Developer",  office: "Santiago",  salary: 23000  });
+    
+            emp.save((err, emp) => {
+                chai.request(server)
+                    .put('/api/employees/' + emp.id)
+                    .send({name : "Mauricio Rojas",  position: "Sr. Developer",  office: "Santiago",  salary: 53000})
+                    .end((err, res) => {
+                        console.log(err);
+                        res.should.have.status(200);
+                        res.body.should.have.be.a('object');
+                        res.body.should.have.property('status').eql('Employee Updated.');                                  
+                    done();                
+                }); 
+           });
+        });
+           
+        });
 
 
 });
